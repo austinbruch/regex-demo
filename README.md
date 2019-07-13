@@ -83,3 +83,6 @@ function parseEmailWithTLDWithRegex(email) {
 
 Once the regex runs, we can then access the "capture groups" just like using an array:
 `regexResult[1]` gets the first capture group, and so on.
+
+## Resources
+https://regex101.com/ is a fantastic tool to build and test regular expressions. It breaks down the regular expression, explaining what each part does and what it intends to match. You can also run test strings to see how your regular expression performs.
