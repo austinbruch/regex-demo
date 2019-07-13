@@ -14,7 +14,7 @@ What if you need to handle multiple options? Do you need to call `indexOf` 4 or 
 
 You may not be interested in extracting data from a string, but rather just ensuring it meets some kind of criteria (think user input validation).
 
-## A case study
+## An extraction example
 
 Given an email address (submitted by a user), how would you extract the username and the domain?
 
@@ -83,6 +83,50 @@ function parseEmailWithTLDWithRegex(email) {
 
 Once the regex runs, we can then access the "capture groups" just like using an array:
 `regexResult[1]` gets the first capture group, and so on.
+
+## A validation example
+
+Validating a variable name with the requirements:
+* Between 10 and 25 characters
+* Must not start with a number
+* Certain characters are not allowed (` `, `$`, and `*`)
+
+How would you approach this without using regular expressions? Maybe something like this:
+```javascript
+function validateWithoutRegex(name) {
+	if (name.length < 10 || name.length > 25) {
+		return false;
+	}
+	var firstCharacter = name[0];
+	if (!isNaN(firstCharacter)) {
+		return false;
+	}
+	if (name.indexOf(' ') >= 0) {
+		return false;
+	}
+	if (name.indexOf('$') >= 0) {
+		return false;
+	}
+	if (name.indexOf('*') >= 0) {
+		return false;
+	}
+	return true;
+}
+```
+
+That's a lot of code. And for every new condition, you're gonna have to add a new `if` block to test.
+
+Regular expression solution:
+```javascript
+function validate(name) {
+	return /^[^\d\s\*\$][^\s\*\$]{9,24}$/.test(name);
+}
+```
+This is much more consise. Let's break it down:
+* `^` signifies the start of the input string
+* `[^\d\s\*\$]` means to match a single character that is _not_ (`^`): a number (`\d`), a space (`\s`), an asterisk (`\*`), or a dollar sign (`\$`)
+* `[^\s\*\$]{9,24}` means to match 9 to 24 sequential characters that are _not_ (`^`): a space (`\s`), an asterisk (`\*`), or a dollar sign (`\$`)
+* `$` signfifies the end of the input string
 
 ## Resources
 https://regex101.com/ is a fantastic tool to build and test regular expressions. It breaks down the regular expression, explaining what each part does and what it intends to match. You can also run test strings to see how your regular expression performs.
