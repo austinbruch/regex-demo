@@ -129,7 +129,10 @@ Once the regex runs, we can then access the "capture groups" just like using an 
 `regexResult[1]` gets the first capture group, and so on.
 
 ## How crazy can they get?
-Here's a regex used to validate colors in CSS attributes: `(?i)^(?:(?:#(?:[0-9a-f]{3}|(?:[0-9a-f]{2}){2,4}))|(?:(?:rgb|hsl)a?\((?:-?\d{1,3}%?\s*,\s*){2}-?\d{1,3}%?(?:\s*,\s*[\d\.]+)?\)))$`
+Here's a regex used to validate colors in CSS attributes: 
+```javascript
+/^(?:(?:#(?:[0-9a-f]{3}|(?:[0-9a-f]{2}){2,4}))|(?:(?:rgb|hsl)a?\((?:-?\d{1,3}%?\s*,\s*){2}-?\d{1,3}%?(?:\s*,\s*[\d\.]+)?\)))$/
+```
 
 They can get much more complicated than that, all dependent on your use case.
 
