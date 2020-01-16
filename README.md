@@ -10,7 +10,7 @@ Why use regular expressions?
 
 In basic cases, you can get away with doing parsing in more primitive ways. For example, you can use methods like [`String.prototype.indexOf`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) to find the position of a character in a string. From there you can use [`String.prototype.substring`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring) to extract part of the original string, based on the positions you found earlier.
 
-What if you need to handle multiple options? Do you need to call `indexOf` 4 or 5 times, keep track of all the results, and do multuple substrings based on which indexes were found? It quickly becomes overly complicated and doesn't scale well.
+What if you need to handle multiple options? Do you need to call `indexOf` 4 or 5 times, keep track of all the results, and do multiple substrings based on which indexes were found? It quickly becomes overly complicated and doesn't scale well.
 
 You may not be interested in extracting data from a string, but rather just ensuring it meets some kind of criteria (think user input validation).
 
